@@ -9,11 +9,16 @@
     <string name="cvv" translatable="false">CVV</string>
     <string name="mail">Mail</string>
     <string name="back">Back</string>
+    <string name="text_continue">Continue</string>
 
     <string-array name="payment_methods_list">
         <item>Mastercard</item>
         <item>Visa</item>
         <item>American Express</item>
     </string-array>
+    <string name="invalid_mail">Invalid Mail</string>
+    <string name="invalid_cvv">Invalid CVV</string>
+    <string name="invalid_card">Invalid card number</string>
+    <string name="invalid_until">Invalid expiration date</string>
 
 </resources>

@@ -1,24 +1,20 @@
 package com.example.paymentform
 
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
+import android.util.Log
+import android.util.Patterns
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.paymentform.databinding.ActivityMainBinding
 import java.text.NumberFormat
+import java.time.LocalDate
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var datasource: ArrayList<String>
-    private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var paymentMethodAdapter: PaymentMethodAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,38 +27,73 @@ class MainActivity : AppCompatActivity() {
         val priceString = NumberFormat.getCurrencyInstance().format(price)
         binding.textViewTotalPrice.text = priceString
 
-        datasource = ArrayList()
-        datasource.add("Visa")
-        datasource.add("Mastercard")
-        datasource.add("American Express")
-
-        linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        paymentMethodAdapter = PaymentMethodAdapter(datasource)
-
+        binding.buttonSend.setOnClickListener {
+            onSubmit()
+        }
 
     }
 
-    internal class PaymentMethodAdapter(private val data: List<String>) :
-        RecyclerView.Adapter<PaymentMethodAdapter.PaymentMethodHolder>() {
+    private fun validateCvv(cvv : String) : Boolean {
+        return "^\\d{3,4}\$".toRegex().matches(cvv)
+    }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentMethodHolder {
-            val itemBinding = LayoutInflater.from(parent.context).inflate(R.layout.payment_method_item, parent, false)
-            return PaymentMethodHolder(itemBinding)
-        }
+    private fun validateCardNumber(cardNumber: String): Boolean {
+        return "^\\d{16}\$".toRegex().matches(cardNumber)
+    }
 
-        override fun onBindViewHolder(holder: PaymentMethodHolder, position: Int) {
-            holder.textViewTitle.text = data[position]
-        }
+    private fun validateValidUntil(validUntil: String): Boolean {
+        if ("\\d{2}/\\d{2}".toRegex().matches(validUntil)) {
+            val split = validUntil.split("/")
+            val month = split[0].toInt()
+            val year = split[1].toInt() + 2000
 
-        override fun getItemCount(): Int {
-            return data.size
-        }
-
-        internal class PaymentMethodHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            var textViewTitle: TextView
-
-            init {
-                textViewTitle = itemView.findViewById(R.id.textViewTitle)
+            if (month in 1 .. 12)
+            {
+                if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        LocalDate.of(year, month, 1).plusMonths(1).isAfter(LocalDate.now())
+                    } else {
+                        TODO("VERSION.SDK_INT < O")
+                    }
+                ) {
+                    return true;
+                }
             }
         }
-    }}
+        return false
+    }
+
+    private fun validateMail(mail: String) : Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(mail).matches()
+    }
+
+    private fun onSubmit() {
+        val cvv = binding.editCvv.text.toString()
+        val cardNumber = binding.editTextCardNumber.text.toString()
+        val validUntil = binding.editValidUntil.text.toString();
+        val mail = binding.editTextMail.text.toString();
+
+        var hasErrors = false
+
+        if (!validateCardNumber(cardNumber)) {
+            binding.editTextCardNumber.error = getString(R.string.invalid_card)
+            hasErrors = true
+        }
+        if (!validateValidUntil(validUntil)) {
+            binding.editValidUntil.error = getString(R.string.invalid_until)
+            hasErrors = hasErrors.or(true)
+        }
+        if (!validateCvv(cvv)) {
+            binding.editCvv.error = getString(R.string.invalid_cvv)
+            hasErrors = hasErrors.or(true)
+        }
+        if (!validateMail(mail)) {
+            binding.editTextMail.error = getString(R.string.invalid_mail)
+            hasErrors = hasErrors.or(true)
+        }
+
+        if (!hasErrors) {
+            Log.i("MainActivity", "Correcto")
+        }
+
+    }
+}

@@ -8,4 +8,9 @@
     <string name="valid_until" >Válido hasta</string>
     <string name="mail">Correo electrónico</string>
     <string name="back">Volver</string>
+    <string name="text_continue" >Continuar</string>
+    <string name="invalid_mail">Correo inválido</string>
+    <string name="invalid_cvv">CVV Inválido</string>
+    <string name="invalid_card">Número de tarjeta inválido</string>
+    <string name="invalid_until">Fecha de expiración inválida</string>
 </resources>
