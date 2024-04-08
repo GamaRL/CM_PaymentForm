@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="payment_data">Payment Data</string>
+    <string name="total_price" >Total Price</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="choose_payment_method">Choose a Payment Method</string>
+    <string name="card_number" >Card Number</string>
+    <string name="valid_until" >Valid Until</string>
+    <string name="mail">Mail</string>
+    <string name="back">Back</string>
+</resources>

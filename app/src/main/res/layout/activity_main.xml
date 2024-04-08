@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:labelFor="@id/spinnerPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/payment_method"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalPrice" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/payment_data"
+        android:textColor="@color/design_default_color_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/ic_arrow_foreground"
+        android:contentDescription="@string/back" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/total_price"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+    <TextView
+        android:id="@+id/textViewTotalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Spinner
+        android:id="@+id/spinnerPayment"
+        android:layout_width="365dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        android:entries="@array/payment_methods_list"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textViewCardNumber"
+        android:labelFor="@+id/editTextCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/card_number"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPayment" />
+
+    <EditText
+        android:id="@+id/editTextCardNumber"
+        style="@style/Base.Theme.PaymentForm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCardNumber"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/textViewValidUntil"
+        android:labelFor="@+id/editValidUntil"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/valid_until"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCardNumber" />
+
+    <EditText
+        android:id="@+id/editValidUntil"
+        style="@style/Base.Theme.PaymentForm"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewValidUntil"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/textViewCvv"
+        android:labelFor="@id/editCvv"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/cvv"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewValidUntil"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCardNumber" />
+
+    <EditText
+        android:id="@+id/editCvv"
+        style="@style/Base.Theme.PaymentForm"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editValidUntil"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCvv"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/textViewMail"
+        android:labelFor="@id/editTextMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/mail"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCvv" />
+
+    <EditText
+        android:id="@+id/editTextMail"
+        style="@style/Base.Theme.PaymentForm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMail"
+        android:importantForAutofill="no" />
+</androidx.constraintlayout.widget.ConstraintLayout>
