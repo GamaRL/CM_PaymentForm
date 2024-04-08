@@ -16,6 +16,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var price: Int = Random.nextInt(100, 5000)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val price = Random.nextInt(100, 5000)
         val priceString = NumberFormat.getCurrencyInstance().format(price)
         binding.textViewTotalPrice.text = priceString
 
@@ -67,11 +67,17 @@ class MainActivity : AppCompatActivity() {
         return Patterns.EMAIL_ADDRESS.matcher(mail).matches()
     }
 
+    private fun validateOwner(name: String): Boolean {
+        return "^[A-Z][A-Za-z]+(\\s[A-Z][A-Za-z]+)+\$".toRegex().matches(name)
+    }
+
     private fun onSubmit() {
         val cvv = binding.editCvv.text.toString()
         val cardNumber = binding.editTextCardNumber.text.toString()
         val validUntil = binding.editValidUntil.text.toString();
         val mail = binding.editTextMail.text.toString();
+        val paymentMethod = binding.spinnerPayment.selectedItem.toString()
+        val owner = binding.editTextOwner.text.toString()
 
         var hasErrors = false
 
@@ -91,11 +97,22 @@ class MainActivity : AppCompatActivity() {
             binding.editTextMail.error = getString(R.string.invalid_mail)
             hasErrors = hasErrors.or(true)
         }
+        if(!validateOwner(owner)) {
+            binding.editTextMail.error = getString(R.string.invalid_name)
+            hasErrors = hasErrors.or(true)
+        }
 
         if (!hasErrors) {
-            Log.i("MainActivity", "Correcto")
 
-            startActivity(Intent(this, Summary::class.java))
+            val intent = Intent(this, Summary::class.java)
+
+            intent.putExtra("cardNumber", cardNumber)
+            intent.putExtra("mail", mail)
+            intent.putExtra("paymentMethod", paymentMethod)
+            intent.putExtra("owner", owner)
+            intent.putExtra("price", price)
+
+            startActivity(intent)
         }
 
     }

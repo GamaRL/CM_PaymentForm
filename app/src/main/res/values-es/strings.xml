@@ -14,4 +14,7 @@
     <string name="invalid_card">Número de tarjeta inválido</string>
     <string name="invalid_until">Fecha de expiración inválida</string>
     <string name="payment_summary">Resumen de Compra</string>
+    <string name="details">Detalles del Pago</string>
+    <string name="card_owner">Dueño de la Tarjeta</string>
+    <string name="invalid_name">Nombre Inválido</string>
 </resources>

@@ -14,4 +14,7 @@
     <string name="invalid_card">Invalid card number</string>
     <string name="invalid_until">Invalid expiration date</string>
     <string name="payment_summary">Payment Summary</string>
+    <string name="details">Payment Details</string>
+    <string name="card_owner">Card Owner</string>
+    <string name="invalid_name">Invalid Name</string>
 </resources>
