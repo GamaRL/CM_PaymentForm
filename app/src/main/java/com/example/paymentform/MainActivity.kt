@@ -1,5 +1,6 @@
 package com.example.paymentform
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -93,6 +94,8 @@ class MainActivity : AppCompatActivity() {
 
         if (!hasErrors) {
             Log.i("MainActivity", "Correcto")
+
+            startActivity(Intent(this, Summary::class.java))
         }
 
     }

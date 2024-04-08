@@ -13,4 +13,5 @@
     <string name="invalid_cvv">CVV Inválido</string>
     <string name="invalid_card">Número de tarjeta inválido</string>
     <string name="invalid_until">Fecha de expiración inválida</string>
+    <string name="payment_summary">Resumen de Compra</string>
 </resources>

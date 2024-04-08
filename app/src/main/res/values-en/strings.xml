@@ -13,4 +13,5 @@
     <string name="invalid_cvv">Invalid CVV</string>
     <string name="invalid_card">Invalid card number</string>
     <string name="invalid_until">Invalid expiration date</string>
+    <string name="payment_summary">Payment Summary</string>
 </resources>
