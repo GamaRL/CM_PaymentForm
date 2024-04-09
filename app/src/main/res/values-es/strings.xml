@@ -17,4 +17,7 @@
     <string name="details">Detalles del Pago</string>
     <string name="card_owner">Dueño de la Tarjeta</string>
     <string name="invalid_name">Nombre Inválido</string>
+    <string name="success">La operación fue exitosa</string>
+    <string name="fail">Algo salió mal</string>
+    <string name="loading">Creando solicitud de pago...</string>
 </resources>

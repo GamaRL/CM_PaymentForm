@@ -9,6 +9,18 @@
 
 
     <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/design_default_color_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalPrice" />
+
+    <TextView
         android:id="@+id/textViewTotalPriceLabel"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -100,7 +112,7 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/payment_summary"
         android:textColor="@color/design_default_color_primary"
@@ -114,14 +126,15 @@
         android:id="@+id/imageViewBack"
         android:layout_width="34dp"
         android:layout_height="37dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/ic_arrow_foreground"
-        android:contentDescription="@string/back" />
+        app:srcCompat="@drawable/ic_arrow_foreground" />
 
     <TextView
         android:id="@+id/textViewDetails"
@@ -161,11 +174,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTotalPriceLabel"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalPriceLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

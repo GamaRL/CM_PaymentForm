@@ -17,4 +17,7 @@
     <string name="details">Payment Details</string>
     <string name="card_owner">Card Owner</string>
     <string name="invalid_name">Invalid Name</string>
+    <string name="success">The operation was successfull</string>
+    <string name="fail">There was an error with the operation</string>
+    <string name="loading">Creating payment request...</string>
 </resources>

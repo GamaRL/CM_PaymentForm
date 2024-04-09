@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             hasErrors = hasErrors.or(true)
         }
         if(!validateOwner(owner)) {
-            binding.editTextMail.error = getString(R.string.invalid_name)
+            binding.editTextOwner.error = getString(R.string.invalid_name)
             hasErrors = hasErrors.or(true)
         }
 

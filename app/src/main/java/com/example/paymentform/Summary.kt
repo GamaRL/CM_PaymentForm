@@ -1,5 +1,6 @@
 package com.example.paymentform
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,8 +22,10 @@ class Summary : AppCompatActivity() {
         val mail = intent.extras?.getString("mail")
         val owner = intent.extras?.getString("owner")
         val paymentMethod = intent.extras?.getString("paymentMethod")
-        val cardNumber = intent.extras?.getString("cardNumber")
+        val lastCardNumbers = intent.extras?.getString("cardNumber")?.substring(12)
         val price = intent.extras?.getInt("price")
+
+        val cardNumber = "************$lastCardNumbers"
 
         binding.textViewMail.text = mail
         binding.textViewCardNumber.text = cardNumber
@@ -34,9 +37,18 @@ class Summary : AppCompatActivity() {
 
         if (Random.nextInt(1, 4) == 1) {
             binding.imageView.setImageResource(R.mipmap.ic_wrong)
+            binding.textViewStatus.text = getString(R.string.fail)
+            binding.textViewStatus.setTextColor(Color.RED)
         } else {
             binding.imageView.setImageResource(R.mipmap.ic_success)
+            binding.textViewStatus.text = getString(R.string.success)
+            binding.textViewStatus.setTextColor(Color.GREEN)
         }
 
+        binding.imageViewBack.setOnClickListener{
+            finish()
+        }
     }
+
+
 }
